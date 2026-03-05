@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildlife Quiz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:url("images/lion.avif") center/cover no-repeat fixed;
+color:white;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#020617;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+z-index:1000;
+}
+
+nav a{
+color:white;
+margin:0 12px;
+text-decoration:none;
+font-weight:500;
+}
+
+nav a:hover{
+color:#22c55e;
+}
+
+nav a.active{
+color:#22c55e;
+border-bottom:2px solid #22c55e;
+}
+
+/* QUIZ AREA */
+
+.quiz-wrapper{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding-top:120px;
+padding-bottom:40px;
+}
+
+.quiz-container{
+background:rgba(0,0,0,0.75);
+padding:40px;
+border-radius:20px;
+width:420px;
+text-align:center;
+box-shadow:0 0 40px #22c55e;
+}
+
+button{
+display:block;
+width:100%;
+margin:10px 0;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#22c55e;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<h2><i class="fas fa-earth-africa"></i> Wildlife Explorer</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="animals.html">Animals</a>
+<a href="gallery.html">Gallery</a>
+<a href="endangered.html">Endangered</a>
+<a href="quiz.html" class="active">Quiz</a>
+<a href="features.html">Features</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+
+<div class="quiz-wrapper">
+
+<div class="quiz-container">
+
+<h1>Wildlife Quiz</h1>
+
+<h3 id="question"></h3>
+
+<div id="answers"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const quiz = [
+
+{
+question:"Which animal is the tallest land animal?",
+answers:["Elephant","Camel","Giraffe","Horse"],
+correct:"Giraffe"
+},
+
+{
+question:"Which animal is known as the King of the Jungle?",
+answers:["Lion","Tiger","Bear","Wolf"],
+correct:"Lion"
+},
+
+{
+question:"Which animal is the fastest land animal?",
+answers:["Horse","Cheetah","Tiger","Kangaroo"],
+correct:"Cheetah"
+},
+
+{
+question:"Which bird can mimic human speech?",
+answers:["Parrot","Eagle","Owl","Falcon"],
+correct:"Parrot"
+},
+
+{
+question:"Which animal is the largest mammal?",
+answers:["Elephant","Blue Whale","Shark","Giraffe"],
+correct:"Blue Whale"
+}
+
+]
+
+let current = 0
+let score = 0
+
+function loadQuestion(){
+
+let q = quiz[current]
+
+document.getElementById("question").innerText = q.question
+
+let html=""
+
+q.answers.forEach(ans=>{
+
+html+=`<button onclick="answer('${ans}')">${ans}</button>`
+
+})
+
+document.getElementById("answers").innerHTML=html
+
+}
+
+function answer(ans){
+
+if(ans===quiz[current].correct){
+score++
+}
+
+current++
+
+if(current<quiz.length){
+
+loadQuestion()
+
+}
+
+else{
+
+document.getElementById("question").innerHTML="Quiz Finished!"
+
+document.getElementById("answers").innerHTML=
+`<h2>Your Score: ${score}/${quiz.length}</h2>
+<button onclick="location.reload()">Play Again</button>`
+
+}
+
+}
+
+loadQuestion()
+
+</script>
+<footer>
+<p>© 2026 Wildlife Explorer | Developed by Abriam (Call me Brie) | BSIT Project</p>
+</footer>
+</body>
+</html>
