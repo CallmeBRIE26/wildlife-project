@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wildlife Quiz | Wildlife Explorer</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body class="quiz-background">
+
+
+<header>
+
+<h1><i class="fas fa-earth-africa"></i> Wildlife Explorer</h1>
+
+<!-- MOBILE MENU BUTTON -->
+<button class="menu-toggle">
+<i class="fas fa-bars"></i>
+</button>
+
+<nav class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="animals.html">Animals</a>
+<a href="gallery.html">Gallery</a>
+<a href="endangered.html">Endangered</a>
+<a href="quiz.html" class="active">Quiz</a>
+<a href="features.html">Features</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+
+<div class="quiz-wrapper">
+
+<div class="quiz-container">
+
+<h1>Wildlife Quiz</h1>
+
+<h3 id="question"></h3>
+
+<div id="answers"></div>
+
+</div>
+
+</div>
+
+
+<footer>
+<p>© 2026 Wildlife Explorer | Developed by Abriam (Call me Brie) | BSIT Project</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+const quiz = [
+
+{
+question:"Which animal is the tallest land animal?",
+answers:["Elephant","Camel","Giraffe","Horse"],
+correct:"Giraffe"
+},
+
+{
+question:"Which animal is known as the King of the Jungle?",
+answers:["Lion","Tiger","Bear","Wolf"],
+correct:"Lion"
+},
+
+{
+question:"Which animal is the fastest land animal?",
+answers:["Horse","Cheetah","Tiger","Kangaroo"],
+correct:"Cheetah"
+},
+
+{
+question:"Which bird can mimic human speech?",
+answers:["Parrot","Eagle","Owl","Falcon"],
+correct:"Parrot"
+},
+
+{
+question:"Which animal is the largest mammal?",
+answers:["Elephant","Blue Whale","Shark","Giraffe"],
+correct:"Blue Whale"
+},
+
+{
+question:"Which animal has a long trunk?",
+answers:["Elephant","Bear","Wolf","Zebra"],
+correct:"Elephant"
+},
+
+{
+question:"Which animal has black and white stripes?",
+answers:["Tiger","Zebra","Panda","Skunk"],
+correct:"Zebra"
+},
+
+{
+question:"Which animal can fly?",
+answers:["Eagle","Lion","Elephant","Bear"],
+correct:"Eagle"
+},
+
+{
+question:"Which animal is famous for jumping?",
+answers:["Kangaroo","Tiger","Wolf","Bear"],
+correct:"Kangaroo"
+},
+
+{
+question:"Which animal lives mostly in water?",
+answers:["Dolphin","Tiger","Giraffe","Elephant"],
+correct:"Dolphin"
+}
+
+]
+
+let current = 0
+let score = 0
+
+function loadQuestion(){
+
+let q = quiz[current]
+
+document.getElementById("question").innerText = q.question
+
+let html=""
+
+q.answers.forEach(ans=>{
+html+=`<button onclick="answer('${ans}')">${ans}</button>`
+})
+
+document.getElementById("answers").innerHTML = html
+
+}
+
+function answer(ans){
+
+if(ans === quiz[current].correct){
+score++
+}
+
+current++
+
+if(current < quiz.length){
+
+loadQuestion()
+
+}
+
+else{
+
+let passScore = Math.ceil(quiz.length * 0.6)
+let resultText = ""
+
+if(score >= passScore){
+
+resultText = `<h2 style="color:#22c55e">PASSED</h2>`
+
+confetti({
+particleCount:200,
+spread:120,
+origin:{y:0.6}
+})
+
+}
+
+else{
+
+resultText = `<h2 style="color:red">FAILED</h2>`
+
+}
+
+document.getElementById("question").innerHTML = "Quiz Finished!"
+
+document.getElementById("answers").innerHTML = `
+${resultText}
+<h3>Your Score: ${score}/${quiz.length}</h3>
+<button onclick="location.reload()">Play Again</button>
+`
+
+}
+
+}
+
+loadQuestion()
+
+</script>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+navLinks.classList.toggle("show");
+});
+
+</script>
+
+</body>
+</html>

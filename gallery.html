@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wildlife Gallery | Wildlife Explorer</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1><i class="fas fa-earth-africa"></i> Wildlife Explorer</h1>
+
+<!-- MOBILE MENU BUTTON -->
+<button class="menu-toggle">
+<i class="fas fa-bars"></i>
+</button>
+
+<nav class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="animals.html">Animals</a>
+<a href="gallery.html" class="active">Gallery</a>
+<a href="endangered.html">Endangered</a>
+<a href="quiz.html">Quiz</a>
+<a href="features.html">Features</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+
+<section class="gallery">
+
+<img src="images/lion.avif" alt="Lion" loading="lazy">
+<img src="images/elephant.avif" alt="Elephant" loading="lazy">
+<img src="images/panda.avif" alt="Panda" loading="lazy">
+<img src="images/dolphin.avif" alt="Dolphin" loading="lazy">
+<img src="images/tiger.avif" alt="Tiger" loading="lazy">
+<img src="images/bear.avif" alt="Bear" loading="lazy">
+<img src="images/kangaroo.avif" alt="Kangaroo" loading="lazy">
+<img src="images/crocodile.avif" alt="Crocodile" loading="lazy">
+<img src="images/eagle.avif" alt="Eagle" loading="lazy">
+<img src="images/giraffes.avif" alt="Giraffe" loading="lazy">
+<img src="images/graywolf.avif" alt="Gray Wolf" loading="lazy">
+<img src="images/leopard.avif" alt="Leopard" loading="lazy">
+<img src="images/monkey.avif" alt="Monkey" loading="lazy">
+<img src="images/parrot.avif" alt="Parrot" loading="lazy">
+<img src="images/rhinoceros.avif" alt="Rhinoceros" loading="lazy">
+<img src="images/snake.avif" alt="Snake" loading="lazy">
+<img src="images/turtle.avif" alt="Sea Turtle" loading="lazy">
+<img src="images/whale.avif" alt="Whale" loading="lazy">
+<img src="images/zebra.avif" alt="Zebra" loading="lazy">
+
+</section>
+
+
+<footer>
+<p>© 2026 Wildlife Explorer | Developed by Abriam (Call me Brie) | BSIT Project</p>
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+navLinks.classList.toggle("show");
+});
+
+</script>
+
+</body>
+</html>
